@@ -3,7 +3,7 @@
     <li  v-bind:class="{ 'practice-item': true, 'current-item': this.$store.state.practiceItemIndex === index && this.$store.state.playing }">
       <div>{{ practiceItem.title }}, {{ practiceItem.minutes }} min</div>
 
-      <CountdownTimer v-if="this.$store.state.playing && index === this.$store.state.practiceItemIndex"/>
+      <CountdownTimer v-if="this.$store.state.playing && index === this.$store.state.practiceItemIndex" :minutes="practiceItem.minutes"/>
       <button v-if="!this.$store.state.playing" class="delete-btn" @click="$store.commit('deletePracticeItem', index)">Delete</button>
     </li>
   </div>

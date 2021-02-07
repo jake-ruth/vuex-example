@@ -9,9 +9,12 @@
     </div>
 
     <div class='bottom-btn-row'>
-   <button class="play-btn" @click="$store.commit('setPracticeItemIndex', false)">Back</button>
-      <button class="play-btn" @click="$store.commit('setPlaying')">{{ this.$store.state.playing ? 'pause' : 'play'}}</button>
-       <button class="play-btn" @click="$store.commit('setPracticeItemIndex', true)">Next</button>
+      <v-btn
+  elevation="2"
+>asdf</v-btn>
+   <button v-if="$store.state.playing" class="play-btn" @click="$store.commit('setPracticeItemIndex', false)"><i class="fas fa-arrow-left" style="margin-right: 10px"></i>Back</button>
+    <button class="play-btn" @click="$store.commit('setPlaying')">{{ this.$store.state.playing ? 'Pause' : 'Start'}}<i :class="this.$store.state.playing ? 'fas fa-pause' : 'fas fa-play'" style="margin-left: 10px"></i></button>
+    <button v-if="$store.state.playing" class="play-btn" @click="$store.commit('setPracticeItemIndex', true)">Next <i class="fas fa-arrow-right" style="margin-left: 10px"></i></button>
        </div>
   </div>
 </template>
@@ -31,9 +34,11 @@ export default {
 
 <style scoped>
 .practice-routine {
-  border: solid white 1px;
+  border-radius: 5px;
+  padding: 20px;
   margin-left: 30%;
   margin-right: 30%;
+  background: rgb(116, 116, 116);
 }
 
 .play-btn {

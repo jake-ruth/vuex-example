@@ -1,5 +1,5 @@
 <template >
-<countdown :end-time="new Date().getTime() + 60000">
+<countdown :end-time="new Date().getTime() + 60000 * minutes">
   <template
     v-slot:process="anyYouWantedScopName">
       <span>{{ `Lefttime: ${anyYouWantedScopName.timeObj.ceil.s}` }}</span>
@@ -13,6 +13,9 @@
 
 <script>
 export default {
-    name: 'CountdownTimer'
+    name: 'CountdownTimer',
+    props: {
+      minutes: Number
+    }
 }
 </script>

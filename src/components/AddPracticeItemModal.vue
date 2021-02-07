@@ -14,6 +14,11 @@
               <input v-model="newPracticeItem.title" />
               <br />
 
+              <label>Details</label>
+              <br />
+              <textarea v-model="newPracticeItem.details" class="text-area" />
+              <br />
+
               <label>Minutes</label>
               <br />
               <input v-model="newPracticeItem.minutes" type="number" />
@@ -45,7 +50,7 @@ export default {
   },
   data() {
     return {
-      newPracticeItem: { title: 'asdf', minutes: 0 }
+      newPracticeItem: { title: '', details: '', minutes: 0 }
     };
   },
   methods: {
@@ -145,5 +150,11 @@ input {
 
 input:focus {
   outline: none;
+}
+
+textarea {
+  min-width: 100%;
+  max-width: 100%;
+  height: 100px;
 }
 </style>
