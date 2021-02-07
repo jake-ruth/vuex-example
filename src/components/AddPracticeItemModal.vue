@@ -9,19 +9,11 @@
 
           <div class="modal-body">
             <slot name="body">
-              <label>Title</label>
-              <br />
-              <input v-model="newPracticeItem.title" />
-              <br />
+              <v-text-field v-model="newPracticeItem.title" dark label="Title"></v-text-field>
 
-              <label>Details</label>
-              <br />
-              <textarea v-model="newPracticeItem.details" class="text-area" />
-              <br />
+              <v-textarea solo v-model="newPracticeItem.details" name="input-7-4" label="Details"></v-textarea>
 
-              <label>Minutes</label>
-              <br />
-              <input v-model="newPracticeItem.minutes" type="number" />
+              <v-text-field type="number" v-model="newPracticeItem.minutes" dark label="Minutes"></v-text-field>
             </slot>
           </div>
 

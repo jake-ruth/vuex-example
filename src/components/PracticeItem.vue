@@ -1,10 +1,20 @@
 <template>
   <div>
-    <li  v-bind:class="{ 'practice-item': true, 'current-item': this.$store.state.practiceItemIndex === index && this.$store.state.playing }">
+    <li
+      v-bind:class="{
+        'practice-item': true,
+        'current-item': this.$store.state.practiceItemIndex === index && this.$store.state.playing
+      }"
+    >
       <div>{{ practiceItem.title }}, {{ practiceItem.minutes }} min</div>
 
-      <CountdownTimer v-if="this.$store.state.playing && index === this.$store.state.practiceItemIndex" :minutes="practiceItem.minutes"/>
-      <button v-if="!this.$store.state.playing" class="delete-btn" @click="$store.commit('deletePracticeItem', index)">Delete</button>
+      <CountdownTimer
+        v-if="this.$store.state.playing && index === this.$store.state.practiceItemIndex"
+        :minutes="practiceItem.minutes"
+      />
+      <v-btn color="secondary" v-if="!this.$store.state.playing" @click="$store.commit('deletePracticeItem', index)"
+        >Delete</v-btn
+      >
     </li>
   </div>
 </template>
@@ -26,7 +36,6 @@ export default {
 
 <style scoped>
 .practice-item {
-  height: 30px;
   padding: 10px;
   display: flex;
   justify-content: space-between;
@@ -36,12 +45,5 @@ export default {
 
 .current-item {
   background: lightseagreen;
-}
-
-.delete-btn {
-  background: lightcoral;
-  border: none;
-  cursor: pointer;
-  color: white;
 }
 </style>
