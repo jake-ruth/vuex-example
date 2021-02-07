@@ -1,8 +1,8 @@
 <template>
   <div>
-    <li class="practice-item">
+    <li  v-bind:class="{ 'practice-item': true, 'current-item': this.$store.state.practiceItemIndex === index }">
       <div>{{ practiceItem.title }}, {{ practiceItem.minutes }} min</div>
-      <button class="delete-btn" @click="$store.commit('deletePracticeItem', index)">Delete</button>
+      <button v-if="!this.$store.state.playing" class="delete-btn" @click="$store.commit('deletePracticeItem', index)">Delete</button>
     </li>
   </div>
 </template>
@@ -22,10 +22,16 @@ export default {
 
 <style scoped>
 .practice-item {
+  height: 30px;
+  padding: 10px;
   display: flex;
   justify-content: space-between;
   width: 90%;
   flex-direction: row;
+}
+
+.current-item {
+  background: lightseagreen;
 }
 
 .delete-btn {

@@ -7,7 +7,9 @@ const practiceItemsStorage = 'practice_items';
 
 export default new Vuex.Store({
   state: {
-    practiceItems: JSON.parse(localStorage.getItem(practiceItemsStorage)) || []
+    practiceItems: JSON.parse(localStorage.getItem(practiceItemsStorage)) || [],
+    playing: false,
+    practiceItemIndex: 0
   },
   mutations: {
     addPracticeItem(state, practiceItem) {
@@ -17,6 +19,12 @@ export default new Vuex.Store({
     deletePracticeItem(state, index) {
       state.practiceItems.splice(index, 1);
       localStorage.setItem(practiceItemsStorage, JSON.stringify(state.practiceItems));
+    },
+    setPlaying(state) {
+      state.playing = !state.playing;
+    },
+    setPracticeItemIndex(state, increment) {
+      increment ? state.practiceItemIndex++ : state.practiceItemIndex--;
     }
   },
   actions: {},
