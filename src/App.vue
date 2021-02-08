@@ -1,19 +1,31 @@
 <template>
   <v-app>
-    <v-app-bar app dark>
-      <div class="d-flex align-center">
-        Jake's Example Vuex App
-      </div>
-
-      <v-spacer></v-spacer>
-    </v-app-bar>
-
     <v-main>
-      <div id="nav">
-        <router-link to="/">Create</router-link> |
-        <router-link to="/about">My Routines</router-link>
-      </div>
-      <router-view />
+      <v-app-bar app dark>
+        <router-link to="/" class="d-flex align-center" style="text-decoration: none">
+          Jake's Example Vuex App
+        </router-link>
+        <v-spacer></v-spacer>
+
+        <router-link to="/about" style="text-decoration: none">
+          <v-btn text>
+            about
+          </v-btn>
+        </router-link>
+
+        <router-link to="/resources" style="text-decoration: none">
+          <v-btn text>
+            Resources
+          </v-btn>
+        </router-link>
+
+        <v-btn icon>
+          <v-icon>mdi-dots-vertical</v-icon>
+        </v-btn>
+      </v-app-bar>
+      <v-content>
+        <router-view />
+      </v-content>
     </v-main>
   </v-app>
 </template>
@@ -23,8 +35,14 @@ export default {
   name: 'App',
 
   data: () => ({
-    //
-  })
+    drawer: false,
+    group: null
+  }),
+  watch: {
+    group() {
+      this.drawer = false;
+    }
+  }
 };
 </script>
 
@@ -35,12 +53,5 @@ export default {
   color: white;
   background: rgb(77, 77, 77);
   height: 100vh;
-}
-#nav a {
-  font-weight: bold;
-  color: white;
-}
-#nav a.router-link-exact-active {
-  color: lightseagreen;
 }
 </style>

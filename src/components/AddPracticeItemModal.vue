@@ -1,152 +1,51 @@
 <template>
-  <transition name="modal" v-if="visible">
-    <div class="modal-mask">
-      <div class="modal-wrapper">
-        <div class="modal-container">
-          <div class="modal-header">
-            <h2>Add Practice Item</h2>
-          </div>
+  <div class="text-center">
+    <v-dialog v-model="dialog" activator="dialog" width="500">
+      <template v-slot:activator="{ on, attrs }">
+        <v-btn color="red lighten-2" dark v-bind="attrs" v-on="on">
+          Add Item
+        </v-btn>
+      </template>
 
-          <div class="modal-body">
-            <slot name="body">
-              <v-text-field v-model="newPracticeItem.title" dark label="Title"></v-text-field>
+      <v-card>
+        <v-card-title class="headline grey lighten-2">
+          Add Practice Item
+        </v-card-title>
 
-              <v-textarea solo v-model="newPracticeItem.details" name="input-7-4" label="Details"></v-textarea>
+        <slot name="body">
+          <v-text-field v-model="newPracticeItem.title" label="Title" style="margin: 10px;"></v-text-field>
 
-              <v-text-field type="number" v-model="newPracticeItem.minutes" dark label="Minutes"></v-text-field>
-            </slot>
-          </div>
+          <v-textarea solo v-model="newPracticeItem.details" name="input-7-4" label="Details" style="margin: 10px;"></v-textarea>
 
-          <div class="modal-footer">
-            <slot name="footer">
-              <button class="cancel-btn" @click="setVisible">
-                Cancel
-              </button>
-              <button class="submit-btn" @click="addPracticeItem">
-                OK
-              </button>
-            </slot>
-          </div>
-        </div>
-      </div>
-    </div>
-  </transition>
+          <v-text-field type="number" v-model="newPracticeItem.minutes" label="Minutes" style="margin: 10px;"></v-text-field>
+        </slot>
+
+        <v-card-actions>
+          <v-spacer></v-spacer>
+          <v-btn color="primary" @click="addPracticeItem">
+            Save
+          </v-btn>
+        </v-card-actions>
+      </v-card>
+    </v-dialog>
+  </div>
 </template>
 
 <script>
 export default {
   name: 'AddPracticeItemModal',
-  props: {
-    visible: Boolean,
-    setVisible: Function
-  },
   data() {
     return {
+      dialog: false,
       newPracticeItem: { title: '', details: '', minutes: 0 }
     };
   },
   methods: {
     addPracticeItem() {
+      this.dialog = false;
       this.$store.commit('addPracticeItem', this.newPracticeItem);
       this.newPracticeItem = {};
-      this.setVisible();
     }
   }
 };
 </script>
-
-<style scoped>
-.modal-mask {
-  position: fixed;
-  z-index: 9998;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
-  display: table;
-  transition: opacity 0.3s ease;
-}
-
-.modal-wrapper {
-  display: table-cell;
-  vertical-align: middle;
-}
-
-.modal-container {
-  width: 300px;
-  margin: 0px auto;
-  padding: 20px 30px;
-  background-color: gray;
-  border-radius: 2px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.33);
-  transition: all 0.3s ease;
-  font-family: Helvetica, Arial, sans-serif;
-}
-
-.modal-header h3 {
-  margin-top: 0;
-  color: #42b983;
-}
-
-.modal-body {
-  margin: 20px 0;
-}
-/*
- * The following styles are auto-applied to elements with
- * transition="modal" when their visibility is toggled
- * by Vue.js.
- *
- * You can easily play with the modal transition by editing
- * these styles.
- */
-
-.modal-enter {
-  opacity: 0;
-}
-
-.modal-leave-active {
-  opacity: 0;
-}
-
-.modal-enter .modal-container,
-.modal-leave-active .modal-container {
-  -webkit-transform: scale(1.1);
-  transform: scale(1.1);
-}
-
-.modal-footer {
-  display: flex;
-  justify-content: space-between;
-}
-
-.cancel-btn {
-  background: lightcoral;
-  color: white;
-  border: none;
-  padding: 10px;
-  cursor: pointer;
-}
-
-.submit-btn {
-  background: lightseagreen;
-  color: white;
-  border: none;
-  padding: 10px;
-  cursor: pointer;
-}
-
-input {
-  height: 30px;
-}
-
-input:focus {
-  outline: none;
-}
-
-textarea {
-  min-width: 100%;
-  max-width: 100%;
-  height: 100px;
-}
-</style>
