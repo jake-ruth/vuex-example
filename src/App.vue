@@ -5,7 +5,7 @@
         <router-link to="/" class="d-flex align-center" style="text-decoration: none">
           Jake's Example Vuex App
         </router-link>
-        <v-spacer></v-spacer>
+        <v-spacer> </v-spacer>
 
         <router-link to="/about" style="text-decoration: none">
           <v-btn text>
