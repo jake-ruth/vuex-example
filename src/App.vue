@@ -3,7 +3,7 @@
     <v-main>
       <v-app-bar app dark>
         <router-link to="/" class="d-flex align-center" style="text-decoration: none">
-          Jake's Example Vuex App
+          Jake's Example Vuex App CI/CD
         </router-link>
         <v-spacer> </v-spacer>
 
