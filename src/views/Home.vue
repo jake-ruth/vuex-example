@@ -8,7 +8,6 @@
 
 <script>
 import PracticeRoutine from '../components/PracticeRoutine.vue';
-
 export default {
   name: 'Home',
   components: {
