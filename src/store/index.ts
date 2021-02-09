@@ -6,7 +6,7 @@ const practiceItemsStorage = 'practice_items';
 
 export default new Vuex.Store({
   state: {
-    practiceItems: JSON.parse(localStorage.getItem(practiceItemsStorage)) || [],
+    practiceItems: JSON.parse(localStorage.getItem(practiceItemsStorage) as string),
     playing: false,
     practiceItemIndex: 0
   },
