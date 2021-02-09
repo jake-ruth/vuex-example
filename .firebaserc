@@ -1,0 +1,5 @@
+{
+  "projects": {
+    "default": "vuex-ci-cd-example"
+  }
+}
