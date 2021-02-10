@@ -5,7 +5,7 @@
         Metronome
       </Typography>
       <!-- <div >{this.getBeatBoxes()}</div> -->
-      <button @click="handleStartStop">{{ playing ? 'Stop' : 'Start' }}</button>
+      <!-- <button @click="handleStartStop">{{ playing ? 'Stop' : 'Start' }}</button>
       <input @change="changeBPM" type="number" min="MIN_BPM" max="MAX_BPM" defaultValue="100" />
       <select @change="updateSubdivision" v-model="subdivision">
         <option>2</option>
@@ -14,7 +14,7 @@
         <option>5</option>
         <option>6</option>
         <option>7</option>
-      </select>
+      </select> -->
     </div>
   </div>
 </template>
@@ -35,10 +35,10 @@ export default {
     };
   },
   methods: {
-    updateSubdivision(e) {
-      // let newSubdivision = e.target.value;
-      // this.subdivision = newSubdivision;
-    }
+    // updateSubdivision(e) {
+    //   let newSubdivision = e.target.value;
+    //   this.subdivision = newSubdivision;
+    // }
   }
 };
 </script>
