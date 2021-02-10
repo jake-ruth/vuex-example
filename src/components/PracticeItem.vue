@@ -10,7 +10,7 @@
 
       <CountdownTimer
         v-if="this.$store.state.playing && index === this.$store.state.practiceItemIndex"
-        :minutes="practiceItem.minutes"
+        :minutes="Number(practiceItem.minutes)"
       />
       <v-btn color="secondary" v-if="!this.$store.state.playing" @click="$store.commit('deletePracticeItem', index)"
         >Delete</v-btn
