@@ -36,7 +36,7 @@ export default {
   },
   methods: {
     updateSubdivision(e) {
-      let newSubdivision = e.target.value;
+      // let newSubdivision = e.target.value;
       // this.subdivision = newSubdivision;
     }
   }
