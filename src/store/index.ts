@@ -4,7 +4,22 @@ import Vuex from 'vuex';
 Vue.use(Vuex);
 const practiceItemsStorage = 'practice_items';
 
-export default new Vuex.Store({
+interface StoreTypes {
+  // state: {
+  //   practiceItems: any,
+  //   playing: boolean,
+  //   practiceItemIndex: number
+  // },
+  // mutations: {
+  //   addPracticeItem: () => void;
+  // }
+
+  practiceItems: any;
+  playing: boolean;
+  practiceItemIndex: number;
+}
+
+export default new Vuex.Store<StoreTypes>({
   state: {
     practiceItems: JSON.parse(localStorage.getItem(practiceItemsStorage) as string),
     playing: false,
